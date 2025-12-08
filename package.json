@@ -1,7 +1,9 @@
 {
-    "name": "vaulted-app",
+    "name": "vaulted-game-library-app",
     "private": true,
-    "version": "0.0.0",
+    "version": "1.0.1",
+    "description": "A launcher for games",
+    "author": "NRJ900",
     "main": "dist-electron/main.js",
     "scripts": {
         "dev": "vite",
@@ -87,6 +89,10 @@
     "build": {
         "appId": "com.vaulted.app",
         "productName": "VAULTED",
+        "files": [
+            "dist",
+            "dist-electron"
+        ],
         "win": {
             "target": "nsis",
             "icon": "src/public/VAULTED.ico"
@@ -100,8 +106,8 @@
         "publish": [
             {
                 "provider": "github",
-                "owner": "YOUR_GITHUB_USERNAME",
-                "repo": "YOUR_REPO_NAME"
+                "owner": "NRJ900",
+                "repo": "VAULTED"
             }
         ]
     }

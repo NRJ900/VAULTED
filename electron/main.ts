@@ -994,6 +994,7 @@ function createWindow() {
             preload: preloadPath,
             nodeIntegration: true,
             contextIsolation: true,
+            webSecurity: false, // Allow loading local resources (ASAR)
         },
         frame: false, // Custom title bar
         titleBarStyle: 'hidden',
@@ -1036,7 +1037,14 @@ function createWindow() {
     if (VITE_DEV_SERVER_URL) {
         win.loadURL(VITE_DEV_SERVER_URL)
     } else {
+        // Use relative path loading which works best with ASAR
+        const indexPath = 'dist/index.html';
+        console.log('Loading production index from (relative):', indexPath);
+        win.loadFile(indexPath);
     }
+
+    // DEBUG: Open DevTools in production to see errors
+    // win.webContents.openDevTools();
 }
 
 // Quit when all windows are closed, except on macOS. There, it's common
